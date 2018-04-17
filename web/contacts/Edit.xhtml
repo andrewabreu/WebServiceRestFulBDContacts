@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditContactsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditContactsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contactsController.selected.id}" title="#{bundle.EditContactsTitle_id}" required="true" requiredMessage="#{bundle.EditContactsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditContactsLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{contactsController.selected.name}" title="#{bundle.EditContactsTitle_name}" required="true" requiredMessage="#{bundle.EditContactsRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.EditContactsLabel_telephone}" for="telephone" />
+                    <h:inputText id="telephone" value="#{contactsController.selected.telephone}" title="#{bundle.EditContactsTitle_telephone}" />
+                    <h:outputLabel value="#{bundle.EditContactsLabel_mobile}" for="mobile" />
+                    <h:inputText id="mobile" value="#{contactsController.selected.mobile}" title="#{bundle.EditContactsTitle_mobile}" />
+                    <h:outputLabel value="#{bundle.EditContactsLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{contactsController.selected.email}" title="#{bundle.EditContactsTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditContactsLabel_direction}" for="direction" />
+                    <h:inputText id="direction" value="#{contactsController.selected.direction}" title="#{bundle.EditContactsTitle_direction}" />
+                </h:panelGrid>
+                <h:commandLink action="#{contactsController.update}" value="#{bundle.EditContactsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditContactsViewLink}"/>
+                <br />
+                <h:commandLink action="#{contactsController.prepareList}" value="#{bundle.EditContactsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditContactsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

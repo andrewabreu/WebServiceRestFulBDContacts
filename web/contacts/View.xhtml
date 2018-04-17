@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewContactsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewContactsLabel_id}"/>
+                    <h:outputText value="#{contactsController.selected.id}" title="#{bundle.ViewContactsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewContactsLabel_name}"/>
+                    <h:outputText value="#{contactsController.selected.name}" title="#{bundle.ViewContactsTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewContactsLabel_telephone}"/>
+                    <h:outputText value="#{contactsController.selected.telephone}" title="#{bundle.ViewContactsTitle_telephone}"/>
+                    <h:outputText value="#{bundle.ViewContactsLabel_mobile}"/>
+                    <h:outputText value="#{contactsController.selected.mobile}" title="#{bundle.ViewContactsTitle_mobile}"/>
+                    <h:outputText value="#{bundle.ViewContactsLabel_email}"/>
+                    <h:outputText value="#{contactsController.selected.email}" title="#{bundle.ViewContactsTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewContactsLabel_direction}"/>
+                    <h:outputText value="#{contactsController.selected.direction}" title="#{bundle.ViewContactsTitle_direction}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contactsController.destroyAndView}" value="#{bundle.ViewContactsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewContactsEditLink}"/>
+                <br />
+                <h:commandLink action="#{contactsController.prepareCreate}" value="#{bundle.ViewContactsCreateLink}" />
+                <br />
+                <h:commandLink action="#{contactsController.prepareList}" value="#{bundle.ViewContactsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewContactsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
